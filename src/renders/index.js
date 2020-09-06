@@ -7,6 +7,7 @@ import {HeaderRenderer} from "./header";
 import React, {Component} from "react";
 import {InlineRenderer} from "./inline";
 import {HorizontalLineRenderer} from "./horizontal_line";
+import {ParagraphRenderer} from "./paragraph";
 
 export class Renders extends Component {
 
@@ -14,6 +15,8 @@ export class Renders extends Component {
         new HeaderRenderer(),
         new InlineRenderer(),
         new HorizontalLineRenderer(),
+        new ParagraphRenderer(),
+
     ];
 
     render() {
