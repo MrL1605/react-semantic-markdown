@@ -1,15 +1,23 @@
 /**
  * Created By : Lalit
  * Created On : 05/09/20
- * Organisation: CustomerXPs Software Private Ltd.
  */
 
 import React, {Component} from "react";
+import MarkdownIt from "markdown-it";
+import {Renders} from "./renders";
 
 export class ReactSemanticMarkdown extends Component {
 
+    constructor(props) {
+        super(props);
+        // TODO: Have this customizable in future.
+        this.mdit = MarkdownIt();
+    }
+
     render() {
-        return <h3>Are we good?</h3>;
+        let parsedTokens = this.mdit.parse(this.props.children);
+        return <Renders tokenList={parsedTokens}/>;
     }
 
 }
