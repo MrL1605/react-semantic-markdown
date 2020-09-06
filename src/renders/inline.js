@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import {Renders} from "./index";
 
 export class InlineRenderer {
     isBlockStart(token) {
@@ -15,23 +16,15 @@ export class InlineRenderer {
     }
 
     canRender(token) {
-        return token["type"] === "inline";
+        return token["type"] === "inline" || token["type"] === "text" || token["type"] === "emoji";
     }
 
     render(token, _key) {
-        if (!token.children.length) {
+        if (token["type"] === "text" || token["type"] === "emoji")
             return token.content;
-        }
+        if (!token.children || !token.children.length)
+            return token.content;
 
-        let contents = [];
-        for (let eachChild of token.children) {
-            if (eachChild.type === "text" || eachChild.type === "emoji")
-                contents.push(eachChild.content);
-            else {
-                console.error("Unsupported type", eachChild);
-                contents.push("ABRAKADABRA");
-            }
-        }
-        return contents.join(" ");
+        return <Renders key={_key} tokenList={token.children} startingKey={_key}/>;
     }
 }

@@ -29,7 +29,7 @@ class ExampleForRSM extends React.Component {
         if (loading || !md) {
             return "Loading. Please wait."
         }
-        // console.log("Rendering", md);
+        document.getElementById("md_string_content").innerText = md;
         return e(ReactSemanticMarkdown, {}, md);
     }
 }

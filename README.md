@@ -18,6 +18,9 @@ python2 -m SimpleHTTPServer 9856
 ## TODO
 
  - Support all markdown components
+ - Add emoji support
+ - Deploy demo in mrl1605.github.io
+ - Online rendering as similar to [MarkdownIt demo](markdown-it.github.io)
  - Write your own parser
  - Expansion for to open up for customization and not just Semantic
 

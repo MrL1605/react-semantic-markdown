@@ -8,15 +8,24 @@ import React, {Component} from "react";
 import {InlineRenderer} from "./inline";
 import {HorizontalLineRenderer} from "./horizontal_line";
 import {ParagraphRenderer} from "./paragraph";
+import {BulletListRenderer, ListItemRenderer} from "./lists";
+import {StrongRenderer} from "./strong";
+import {LineBreakRenderer} from "./line_break";
+import {LinkRenderer} from "./link";
+
 
 export class Renders extends Component {
 
-    rendersList = [
+    static rendersList = [
         new HeaderRenderer(),
         new InlineRenderer(),
         new HorizontalLineRenderer(),
         new ParagraphRenderer(),
-
+        new StrongRenderer(),
+        new BulletListRenderer(),
+        new ListItemRenderer(),
+        new LineBreakRenderer(),
+        new LinkRenderer(),
     ];
 
     render() {
@@ -28,7 +37,7 @@ export class Renders extends Component {
         while (tokenIndex < tokenList.length) {
             let currentToken = tokenList[tokenIndex];
             let rendered = false;
-            for (let eachRenderer of this.rendersList) {
+            for (let eachRenderer of Renders.rendersList) {
                 // Check if token is inline
                 if (eachRenderer.canRender(currentToken)) {
                     componentList.push(eachRenderer.render(currentToken, startingKey + tokenIndex));
