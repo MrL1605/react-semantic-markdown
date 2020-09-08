@@ -12,6 +12,7 @@ import {BulletListRenderer, ListItemRenderer} from "./lists";
 import {StrongRenderer} from "./strong";
 import {LineBreakRenderer} from "./line_break";
 import {LinkRenderer} from "./link";
+import {BlockquoteRenderer} from "./blockquote";
 
 
 export class Renders extends Component {
@@ -26,6 +27,8 @@ export class Renders extends Component {
         new ListItemRenderer(),
         new LineBreakRenderer(),
         new LinkRenderer(),
+        new BlockquoteRenderer(),
+
     ];
 
     render() {
@@ -49,20 +52,21 @@ export class Renders extends Component {
                     continue;
 
                 // If this is a Block Start, collect all blocks and send them to block renderer
-                let blockTokens = []
+                let blockTokens = [], startToken = currentToken;
                 blockTokens.push(currentToken);
                 tokenIndex += 1;
                 currentToken = tokenList[tokenIndex];
-                while (!eachRenderer.isBlockEnd(currentToken)) {
+                while (!eachRenderer.isBlockEnd(currentToken) || startToken.level !== currentToken.level) {
                     blockTokens.push(currentToken);
                     tokenIndex += 1;
                     if (tokenIndex >= tokenList.length) {
-                        console.error("Reached end of token list, but did not find block end");
+                        console.error("Reached end of token list, but did not find block end for",
+                            eachRenderer, "for list", tokenList, "at index", tokenIndex);
                         break;
                     }
                     currentToken = tokenList[tokenIndex];
                 }
-                if (eachRenderer.isBlockEnd(currentToken)) {
+                if (eachRenderer.isBlockEnd(currentToken) && startToken.level === currentToken.level) {
                     blockTokens.push(currentToken);
                     componentList.push(eachRenderer.render(blockTokens, startingKey + tokenIndex));
                     rendered = true;
