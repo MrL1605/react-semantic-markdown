@@ -34,6 +34,33 @@ export class BulletListRenderer {
 
 }
 
+export class OrderedListRenderer {
+
+    isBlockStart(token) {
+        if (!token["tag"])
+            return false;
+        return token["type"] === "ordered_list_open";
+    }
+
+    isBlockEnd(token) {
+        if (!token["tag"])
+            return false;
+        return token["type"] === "ordered_list_close";
+    }
+
+    canRender(token) {
+        return false;
+    }
+
+    render(tokenList, _key) {
+        tokenList = tokenList.slice(1, tokenList.length - 1);
+        return <List ordered key={_key}>
+            <Renders tokenList={tokenList} startingKey={_key}/>
+        </List>;
+    }
+
+}
+
 export class ListItemRenderer {
 
     isBlockStart(token) {

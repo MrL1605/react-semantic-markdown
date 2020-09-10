@@ -8,11 +8,12 @@ import React, {Component} from "react";
 import {InlineRenderer} from "./inline";
 import {HorizontalLineRenderer} from "./horizontal_line";
 import {ParagraphRenderer} from "./paragraph";
-import {BulletListRenderer, ListItemRenderer} from "./lists";
+import {BulletListRenderer, ListItemRenderer, OrderedListRenderer} from "./lists";
 import {StrongRenderer} from "./strong";
 import {LineBreakRenderer} from "./line_break";
 import {LinkRenderer} from "./link";
 import {BlockquoteRenderer} from "./blockquote";
+import {CodeRenderer} from "./code";
 
 
 export class Renders extends Component {
@@ -28,6 +29,8 @@ export class Renders extends Component {
         new LineBreakRenderer(),
         new LinkRenderer(),
         new BlockquoteRenderer(),
+        new OrderedListRenderer(),
+        new CodeRenderer(),
 
     ];
 
