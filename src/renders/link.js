@@ -25,7 +25,7 @@ export class LinkRenderer {
     }
 
     render(tokenList, _key) {
-        let startingToken = tokenList[0];
+        const startingToken = tokenList[0];
         tokenList = tokenList.slice(1, tokenList.length - 1);
         let attributes = {};
         if (startingToken.attrs) {

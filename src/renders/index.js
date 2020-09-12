@@ -14,6 +14,7 @@ import {LineBreakRenderer} from "./line_break";
 import {LinkRenderer} from "./link";
 import {BlockquoteRenderer} from "./blockquote";
 import {CodeRenderer} from "./code";
+import {TableBodyRenderer, TableCellRenderer, TableRenderer, TableRowRenderer} from "./table";
 
 
 export class Renders extends Component {
@@ -31,7 +32,10 @@ export class Renders extends Component {
         new BlockquoteRenderer(),
         new OrderedListRenderer(),
         new CodeRenderer(),
-
+        new TableRenderer(),
+        new TableRowRenderer(),
+        new TableBodyRenderer(),
+        new TableCellRenderer(),
     ];
 
     render() {

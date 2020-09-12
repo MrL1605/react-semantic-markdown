@@ -26,7 +26,7 @@ export class HeaderRenderer {
     }
 
     render(tokenList, _key) {
-        let startingToken = tokenList[0];
+        const startingToken = tokenList[0];
         tokenList = tokenList.slice(1, tokenList.length - 1);
         return <Header as={startingToken["tag"]} key={_key}>
             <Renders tokenList={tokenList} startingKey={_key}/>

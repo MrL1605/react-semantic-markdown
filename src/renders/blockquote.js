@@ -5,6 +5,7 @@
 
 import React from "react";
 import {Renders} from "./index";
+import "../styles/blockquote-styles.css";
 
 export class BlockquoteRenderer {
 
@@ -26,7 +27,7 @@ export class BlockquoteRenderer {
 
     render(tokenList, _key) {
         tokenList = tokenList.slice(1, tokenList.length - 1);
-        return <blockquote key={_key}>
+        return <blockquote className={"rsm"} key={_key}>
             <Renders tokenList={tokenList} startingKey={_key}/>
         </blockquote>;
     }

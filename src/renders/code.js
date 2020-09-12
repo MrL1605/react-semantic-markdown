@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import {Segment} from "semantic-ui-react";
 
 export class CodeRenderer {
 
@@ -16,13 +17,14 @@ export class CodeRenderer {
     }
 
     canRender(token) {
-        return token["type"] === "code_inline";
+        return token["type"] === "code_inline" || token["type"] === "code_block";
     }
 
     render(token, _key) {
-        return <code key={_key}>
-            {token["content"]}
-        </code>;
+        const content = <code key={_key}>{token["content"]}</code>;
+        if (token["type"] === "code_block")
+            return <Segment>{content}</Segment>;
+        return content;
     }
 
 }
