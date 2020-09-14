@@ -13,7 +13,7 @@ import {LinkRenderer} from "./link";
 import {BlockquoteRenderer} from "./blockquote";
 import {CodeBlockRenderer, CodeRenderer} from "./code";
 import {TableBodyRenderer, TableCellRenderer, TableRenderer, TableRowRenderer} from "./table";
-import {ParagraphRenderer, StrikethroughRenderer, StrongRenderer} from "./text";
+import {ItalicRenderer, ParagraphRenderer, StrikethroughRenderer, StrongRenderer} from "./text";
 
 
 export class Renders extends Component {
@@ -37,6 +37,7 @@ export class Renders extends Component {
         new TableBodyRenderer(),
         new TableCellRenderer(),
         new StrikethroughRenderer(),
+        new ItalicRenderer(),
     ];
 
     render() {

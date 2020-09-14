@@ -51,6 +51,28 @@ export class StrongRenderer {
     }
 }
 
+export class ItalicRenderer {
+
+    isBlockStart(token) {
+        return token["type"] === "em_open";
+    }
+
+    isBlockEnd(token) {
+        return token["type"] === "em_close";
+    }
+
+    canRender(token) {
+        return false;
+    }
+
+    render(tokenList, _key) {
+        tokenList = tokenList.slice(1, tokenList.length - 1);
+        return <em key={_key}>
+            <Renders tokenList={tokenList} startingKey={_key}/>
+        </em>
+    }
+}
+
 export class StrikethroughRenderer {
 
     isBlockStart(token) {
