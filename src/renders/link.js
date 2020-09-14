@@ -9,15 +9,11 @@ import {Renders} from "./index";
 export class LinkRenderer {
 
     isBlockStart(token) {
-        if (!token["tag"])
-            return false;
-        return token["type"] === "link_open";
+return token["type"] === "link_open";
     }
 
     isBlockEnd(token) {
-        if (!token["tag"])
-            return false;
-        return token["type"] === "link_close";
+return token["type"] === "link_close";
     }
 
     canRender(token) {

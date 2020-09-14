@@ -10,15 +10,11 @@ import "../styles/blockquote-styles.css";
 export class BlockquoteRenderer {
 
     isBlockStart(token) {
-        if (!token["tag"])
-            return false;
-        return token["type"] === "blockquote_open";
+return token["type"] === "blockquote_open";
     }
 
     isBlockEnd(token) {
-        if (!token["tag"])
-            return false;
-        return token["type"] === "blockquote_close";
+return token["type"] === "blockquote_close";
     }
 
     canRender(token) {

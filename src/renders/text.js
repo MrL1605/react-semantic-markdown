@@ -5,16 +5,15 @@
 
 import React from "react";
 import {Renders} from "./index";
-import {List} from "semantic-ui-react";
 
-export class BulletListRenderer {
+export class ParagraphRenderer {
 
     isBlockStart(token) {
-return token["type"] === "bullet_list_open";
+        return token["type"] === "paragraph_open";
     }
 
     isBlockEnd(token) {
-return token["type"] === "bullet_list_close";
+        return token["type"] === "paragraph_close";
     }
 
     canRender(token) {
@@ -23,21 +22,21 @@ return token["type"] === "bullet_list_close";
 
     render(tokenList, _key) {
         tokenList = tokenList.slice(1, tokenList.length - 1);
-        return <List bulleted key={_key}>
+        return <p key={_key}>
             <Renders tokenList={tokenList} startingKey={_key}/>
-        </List>;
+        </p>
     }
 
 }
 
-export class OrderedListRenderer {
+export class StrongRenderer {
 
     isBlockStart(token) {
-return token["type"] === "ordered_list_open";
+        return token["type"] === "strong_open";
     }
 
     isBlockEnd(token) {
-return token["type"] === "ordered_list_close";
+        return token["type"] === "strong_close";
     }
 
     canRender(token) {
@@ -46,32 +45,31 @@ return token["type"] === "ordered_list_close";
 
     render(tokenList, _key) {
         tokenList = tokenList.slice(1, tokenList.length - 1);
-        return <List ordered key={_key}>
+        return <strong key={_key}>
             <Renders tokenList={tokenList} startingKey={_key}/>
-        </List>;
+        </strong>
     }
-
 }
 
-export class ListItemRenderer {
+export class StrikethroughRenderer {
 
     isBlockStart(token) {
-return token["type"] === "list_item_open";
+        return token["type"] === "s_open";
     }
 
     isBlockEnd(token) {
-return token["type"] === "list_item_close";
+        return token["type"] === "s_close";
     }
 
     canRender(token) {
-        return false;
+        return token["type"] === "code_inline";
     }
 
     render(tokenList, _key) {
         tokenList = tokenList.slice(1, tokenList.length - 1);
-        return <List.Item key={_key}>
+        return <s key={_key}>
             <Renders tokenList={tokenList} startingKey={_key}/>
-        </List.Item>;
+        </s>
     }
-
 }
+

@@ -7,14 +7,13 @@ import {HeaderRenderer} from "./header";
 import React, {Component} from "react";
 import {InlineRenderer} from "./inline";
 import {HorizontalLineRenderer} from "./horizontal_line";
-import {ParagraphRenderer} from "./paragraph";
 import {BulletListRenderer, ListItemRenderer, OrderedListRenderer} from "./lists";
-import {StrongRenderer} from "./strong";
 import {LineBreakRenderer} from "./line_break";
 import {LinkRenderer} from "./link";
 import {BlockquoteRenderer} from "./blockquote";
-import {CodeRenderer} from "./code";
+import {CodeBlockRenderer, CodeRenderer} from "./code";
 import {TableBodyRenderer, TableCellRenderer, TableRenderer, TableRowRenderer} from "./table";
+import {ParagraphRenderer, StrikethroughRenderer, StrongRenderer} from "./text";
 
 
 export class Renders extends Component {
@@ -32,10 +31,12 @@ export class Renders extends Component {
         new BlockquoteRenderer(),
         new OrderedListRenderer(),
         new CodeRenderer(),
+        new CodeBlockRenderer(),
         new TableRenderer(),
         new TableRowRenderer(),
         new TableBodyRenderer(),
         new TableCellRenderer(),
+        new StrikethroughRenderer(),
     ];
 
     render() {

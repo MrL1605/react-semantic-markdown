@@ -17,14 +17,33 @@ export class CodeRenderer {
     }
 
     canRender(token) {
-        return token["type"] === "code_inline" || token["type"] === "code_block";
+        return token["type"] === "code_inline";
     }
 
     render(token, _key) {
-        const content = <code key={_key}>{token["content"]}</code>;
-        if (token["type"] === "code_block")
-            return <Segment>{content}</Segment>;
-        return content;
+        return <code key={_key}>{token["content"]}</code>;
+    }
+}
+
+export class CodeBlockRenderer {
+
+    isBlockStart(token) {
+        return false;
     }
 
+    isBlockEnd(token) {
+        return false;
+    }
+
+    canRender(token) {
+        return token["type"] === "fence" || token["type"] === "code_block";
+    }
+
+    render(token, _key) {
+        const language = token.info ? token.info.trim() : "";
+
+        return <Segment key={_key}>
+            <pre><code className={language}>{token["content"]}</code></pre>
+        </Segment>;
+    }
 }
