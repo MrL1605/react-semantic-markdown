@@ -33,6 +33,11 @@ python2 -m SimpleHTTPServer 9856
  - ReactDom
  - Semantic-React: Official integration of Semantic without CSS
 
+## Contributions
+
+Contributions are always welcome. PR right away.
+
+Repository originally published at [MrL1605/react-semantic-markdown](https://github.com/MrL1605/react-semantic-markdown).
 
 
 
